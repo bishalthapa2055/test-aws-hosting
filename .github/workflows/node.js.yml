@@ -10,11 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     
     strategy:
-        matrix:
-            node-version: [14.x, 15.x, 16.x]
-            # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+      matrix:
+        node-version: [14.x, 15.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -22,15 +21,20 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: ${{ matrix.node-version }}
         
     - name: Install dependencies
       run: npm install
       
-    # Additonal test conditons
-
+    # Additional test conditions (uncomment if needed)
     # - name: Run tests
     #   run: npm test
     
-    - name : Build Project
-      run : npm run build
+    - name: Build Project
+      run: npm run build
+    
+    - name: Install pm2
+      run: npm install -g pm2
+    
+    - name: Run backend
+      run: pm2 start dist/server.js --name Backend
