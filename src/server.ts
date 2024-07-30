@@ -20,7 +20,7 @@ const start = async() =>{
     // }
       server.listen(process.env.port, () => {
         console.log(
-          `server sttarted at port: http://${process.env.HOST_URL}:${config.port}`
+          `server sttarted at port: http://${process.env.HOST_URL}:${process.env.port || 8080} `
         );
       });
 }
