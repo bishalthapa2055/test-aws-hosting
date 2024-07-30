@@ -10,7 +10,7 @@ const start = async() =>{
     const server = require("http").createServer(app);
       server.listen(process.env.port, () => {
         console.log(
-          `server sttarted at port: http://${process.env.HOST_URL}:${process.env.port || 8080} `
+          `server sttarted at port: http://aryalspace.com `
         );
       });
 }
