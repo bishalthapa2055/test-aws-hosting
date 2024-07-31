@@ -8,7 +8,7 @@ import config from './config';
 const start = async() =>{
     console.log("Starting up........");
     const server = require("http").createServer(app);
-      server.listen(process.env.port, () => {
+      server.listen(8080, () => {
         console.log(
           `server sttarted at port: http://aryalspace.com `
         );
