@@ -9,13 +9,14 @@ phases:
       - echo Installing NGNIX
       - sudo apt-get update
       - sudo apt-get install nginx -y
+      - npm install
   pre_build:
     commands:
       - echo Running tests...
   build:
     commands:
       - echo Building the project...
-      - cp index.html /var/www/html/
+      - npm run build
   post_build:
     commands:
       - echo configuring NGNIX
@@ -24,5 +25,3 @@ artifacts:
     - '**/*'
     - '!node_modules/**/*'
     - '!**/*.log'
-    - /var/www/html/index.html
-  discard-paths: yes
